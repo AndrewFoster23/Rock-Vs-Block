@@ -323,6 +323,7 @@ levelsTemp = 0
 
 continuePls = False
 
+start = False
 run = True
 
 # Loop
@@ -331,17 +332,36 @@ while run:
         if event.type == pygame.QUIT: 
             run = False
     
+    #while start == False:
+        #screen.fill((26, 128, 217))
+        #key = pygame.key.get_pressed()
+        #if key[pygame.K_SPACE] == True:
+            #boom.play()
+            #start == True
+    
     key = pygame.key.get_pressed()
     boomCount += 1
     if key[pygame.K_SPACE] == True and boomCount > 15:
         boom.play()
         boomCount = 0
+        
+        
+    
     
     screen.fill((26, 128, 217))
             
     count += 1
     mx,my=pygame.mouse.get_pos()
         
+    if levelsBeaten == 20:
+        fps = 200
+        
+    if levelsBeaten == 40:
+        fps = 250
+    
+    if levelsBeaten == 60:
+        fps == 300
+    
     if count % 3 == 0:
         changeCoords(mx)
         count = 0
@@ -357,7 +377,7 @@ while run:
             maxBlock += 10
             
             minRock += 5
-            maxRock += 5
+            maxRock += 6
     
     if longCountIndex != len(longCount):
         if extraRockNum[extraRockIndex] > 0 and longCount[longCountIndex] > 340:
@@ -474,32 +494,25 @@ while run:
 
             extraRockX = [148, 8]
             extraRockNum = [2, 3]
-
             aWin = 0
-
+            fps = 120
             currLength = 3
             points = 0
             count = 1
             blockCount = 1
-
             boomCount = 1
             longCount = [0, 0]
             longCountIndex = 0
             blockIndexNum = 0
             extraRockIndex = 0
-
             stageIndex = 0
             continueBlockIndexNum = 0
-
             minBlock = 1
             maxBlock = 11
-
             minRock = 1
             maxRock = 9
-
             levelsBeaten = 0
             levelsTemp = 0
-
             continuePls = False
         
         
@@ -508,3 +521,6 @@ while run:
     pygame.display.flip()   
     
 pygame.quit()
+
+#Maybe click to start (Tried but hard rip)
+#Maybe fix bug with ending score showing
